@@ -1,12 +1,8 @@
 #include "nand.h"
-#include <stdio.h>
 
 int And(int a, int b)
 {
-    int nout;
-
-    nout = Nand(a, b);
-    return(Not(nout));
+    return(Not(Nand(a, b)));
 }
 /* 
 int main(void)
