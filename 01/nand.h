@@ -3,16 +3,36 @@
 
 #include <stdio.h>
 
-typedef struct	a_b
+typedef struct	out2
 {
 	int	a;
 	int	b;
-}a_b;
+}out2;
 
-typedef	struct out16
+typedef	struct	out16
 {
 	int out[16];
 }out16;
+
+typedef	struct	out4
+{
+	int	a;
+	int	b;
+	int	c;
+	int	d;
+}out4;
+
+typedef struct	out8
+{
+	int	a;
+	int	b;
+	int	c;
+	int	d;
+	int e;
+	int	f;
+	int	g;
+	int	h;
+}out8;
 
 
 int		Nand(int a, int b);
@@ -22,11 +42,13 @@ int		Nor(int a, int b);
 int		Or(int a, int b);
 int		Xor(int a, int b);
 int		Mux(int a, int b, int sel);
-a_b		DMux(int sel, int in);
+out2	DMux(int in, int sel);
 out16	Not16(int in[16]);
 out16	Or16(int a[16], int b[16]);
 out16	And16(int a[16], int b[16]);
 out16	Mux16(int a[16], int b[16], int sel);
 int		Or8Way(int in[8]);
+out16	Mux4Way16(int a[16], int b[16], int c[16], int d[16], int sel[2]);
+out4	DMux4Way(int in, int sel[2]);
 
 #endif

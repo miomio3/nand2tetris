@@ -1,8 +1,8 @@
 #include "nand.h"
 
-a_b	DMux(int sel, int in)
+out2	DMux(int in, int sel)
 {
-	a_b	out;
+	out2	out;
 
 	out.a = And(in, Not(sel));
 	out.b = And(in, sel);
