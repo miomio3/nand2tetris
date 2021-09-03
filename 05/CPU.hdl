@@ -1,0 +1,61 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/05/CPU.hdl
+
+/**
+ * The Hack CPU (Central Processing unit), consisting of an ALU,
+ * two registers named A and D, and a program counter named PC.
+ * The CPU is designed to fetch and execute instructions written in 
+ * the Hack machine language. In particular, functions as follows:
+ * Executes the inputted instruction according to the Hack machine 
+ * language specification. The D and A in the language specification
+ * refer to CPU-resident registers, while M refers to the external
+ * memory location addressed by A, i.e. to Memory[A]. The inM input 
+ * holds the value of this location. If the current instruction needs 
+ * to write a value to M, the value is placed in outM, the address 
+ * of the target location is placed in the addressM output, and the 
+ * writeM control bit is asserted. (When writeM==0, any value may 
+ * appear in outM). The outM and writeM outputs are combinational: 
+ * they are affected instantaneously by the execution of the current 
+ * instruction. The addressM and pc outputs are clocked: although they 
+ * are affected by the execution of the current instruction, they commit 
+ * to their new values only in the next time step. If reset==1 then the 
+ * CPU jumps to address 0 (i.e. pc is set to 0 in next time step) rather 
+ * than to the address resulting from executing the current instruction. 
+ */
+
+CHIP CPU {
+
+    IN  inM[16],         // M value input  (M = contents of RAM[A])
+        instruction[16], // Instruction for execution
+        reset;           // Signals whether to re-start the current
+                         // program (reset==1) or continue executing
+                         // the current program (reset==0).
+
+    OUT outM[16],        // M value output
+        writeM,          // Write to M? 
+        addressM[15],    // Address in data memory (of M)
+        pc[15];          // address of next instruction
+
+    PARTS:// Put your code here:
+Mux16(a=instruction,b=om,sel=instruction[15],out=a1);
+Not(in=instruction[15],out=noti);  //Aレジスタのload作り
+Or(a=noti,b=instruction[5],out=aload);  //load完成
+Register(in=a1,load=aload,out=a2,out[0..14]=addressM);  //Aレジスタ完成
+Mux16(a=a2,b=inM,sel=instruction[12],out=am);  //AかMを選択
+And(a=instruction[4],b=instruction[15],out=loadd);  //Dレジスタload
+Register(in=om,load=loadd,out=d1);  //Dレジスタ
+ALU(x=d1,y=am,zx=instruction[11],nx=instruction[10],zy=instruction[9],ny=instruction[8],f=instruction[7],no=instruction[6],out=outM,out=om,zr=r1,ng=g1);
+
+Or(a=r1,b=g1,out=rg);  
+Not(in=rg,out=notrg);  //出力が0より大きいなら1
+And(a=instruction[2],b=g1,out=j1);  //出力が0より小さいならgotoのload
+And(a=instruction[1],b=r1,out=j2);  //〃　　　と同じなら〃
+And(a=instruction[0],b=notrg,out=j3);  //〃　より大きいなら〃
+Or8Way(in[0]=j1,in[1]=j2,in[2]=j3,in[3]=false,in[4]=false,in[5]=false,in[6]=false,in[7]=false,out=w1);
+And(a=instruction[15],b=w1,out=loadpc);  //pcのload
+
+PC(in=a2,inc=true,load=loadpc,reset=reset,out[0..14]=pc);  //pc
+And(a=instruction[15],b=instruction[3],out=writeM);  //writeM
+}
