@@ -40,7 +40,7 @@ out16	Add16(int a[16], int b[16])
 	out.out[15] = w1.sum;
 	return(out);
 }
-
+/* 
 int main(void)
 {
 	int		a[16];
@@ -82,4 +82,4 @@ int main(void)
 	while(++i < 16)
 		printf("out%d = %d\n", i, out.out[i]);
 	return(0);
-}
+} */

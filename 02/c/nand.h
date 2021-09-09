@@ -40,6 +40,13 @@ typedef struct sum_carry
 	int carry;
 }sum_carry;
 
+typedef struct ALUout
+{
+	int out[16];
+	int zr;
+	int ng;
+}ALUout;
+
 
 int			Nand(int a, int b);
 int			Not(int in);
@@ -59,5 +66,7 @@ out4		DMux4Way(int in, int sel[2]);
 sum_carry	HalfAdder(int a, int b);
 sum_carry	FullAdder(int a, int b, int c);
 out16		Add16(int a[16], int b[16]);
+out16		Inc16(int a[16]);
+ALUout		ALU(int x[16], int y[16], int zx, int nx, int zy, int ny, int f, int no);
 
 #endif
