@@ -1,6 +1,6 @@
 NAME = a.out
 CC = gcc
-SRC = asm.c libft.c 
+SRC = asm.c libft.c file.c
 
 all		:$(NAME)
 $(NAME)	:$(SRC)
