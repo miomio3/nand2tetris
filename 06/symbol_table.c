@@ -55,3 +55,34 @@ t_symbols    *init_symbol_table(void)
 	add_r(symbols);
 	return(head);
 }
+
+char	*ft_substr2para(char *p)
+{
+	int		len;
+	char	*re;
+	int		j;
+
+	len = 0;
+	while(p[len] != ')')
+		len++;
+	re = malloc(sizeof(char) * len + 1);
+	j = 0;
+	while(len--)
+	{
+		re[j] = p[j];
+		j++;
+	}
+	re[j] = '\0';
+	return(re);
+}
+
+void	add_para_symbol(t_symbols **symbols, char *p, token *Token)
+{
+	int		memory;
+	char	*s;
+
+	memory = count_Token(Token);
+	s = ft_substr2para(p + 1);
+	add_symbol(symbols, s, memory);
+	free(s);
+}
