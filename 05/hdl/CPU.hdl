@@ -48,7 +48,7 @@ And(a=instruction[4],b=instruction[15],out=loadd);  //Dレジスタload
 Register(in=om,load=loadd,out=d1);  //Dレジスタ
 ALU(x=d1,y=am,zx=instruction[11],nx=instruction[10],zy=instruction[9],ny=instruction[8],f=instruction[7],no=instruction[6],out=outM,out=om,zr=r1,ng=g1);
 
-Or(a=r1,b=g1,out=rg);  
+Or(a=r1,b=g1,out=rg);
 Not(in=rg,out=notrg);  //出力が0より大きいなら1
 And(a=instruction[2],b=g1,out=j1);  //出力が0より小さいならgotoのload
 And(a=instruction[1],b=r1,out=j2);  //〃　　　と同じなら〃

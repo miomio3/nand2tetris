@@ -2,7 +2,7 @@
 
 char    *nl(char *p)
 {
-    while(p != '\n')
+    while(*p != '\n')
         p++;
     p++;
     return(p);
