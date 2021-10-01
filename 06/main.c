@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     open_file(&fd, argv, array);
     read_file(fd, array, &assembly);
     assembler(assembly);
-    //printf("%s", assembly);//debug
+	close(fd);
     safe_free(array);
     safe_free(assembly);
     return(0);

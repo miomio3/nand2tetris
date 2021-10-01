@@ -6,5 +6,6 @@ void	assembler(char *assembly)
 	token		*token;
 
 	symbols = init_symbol_table();
-	perser(assembly, symbols);
+	token = perser(assembly, symbols);
+	//openfile .. write .. closefile
 }

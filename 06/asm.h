@@ -66,5 +66,7 @@ void		add_para_symbol(t_symbols **symbols, char *p, token *Token);
 token		*perser(char *assembly, t_symbols *symbols);
 //token
 int			count_Token(token *Token);
+//tokenA
+void		add_Atoken(t_symbols **symbols, char *s, token **Token);
 
 #endif
