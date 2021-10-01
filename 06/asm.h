@@ -9,31 +9,40 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef enum
+typedef	enum
 {
     ERROR,
     NOERROR
-}error;
+}		error;
 
 typedef enum
 {
 	EXIST,
 	NOEXIST
-}exist;
+}		exist;
 
-typedef struct  token
+typedef enum
 {
-    char            *s1;//A命令の時は@、C命令の時はA=など
-    char            *s2;//A命令の時は数字、C命令の時はD-1など
-    struct token    *next;
-}               token;
+	A,
+	C
+}		AorC;
 
-typedef struct  s_symbols
+typedef struct	token
 {
-    struct s_symbols    *next;
-    char                *symbol;
-    int                 memory;
-}               t_symbols;
+	int				type;//A命令かC命令か
+	int				memory;//A命令時の数字
+    char			*s1;//C命令の時のA=など
+    char			*s2;//C命令の時のD-1など
+	int				order;//何番目の命令か
+    struct token	*next;
+}				token;
+
+typedef struct	s_symbols
+{
+    struct s_symbols	*next;
+    char				*symbol;
+    int					memory;
+}				t_symbols;
 
 //asm
 void		assembler(char *assembly);
@@ -54,6 +63,8 @@ t_symbols	*init_symbol_table(void);
 void		add_symbol(t_symbols **symbols, char *s, int memory);
 void		add_para_symbol(t_symbols **symbols, char *p, token *Token);
 //perser
-void    	perser(char *assembly, t_symbols *symbols);
+token		*perser(char *assembly, t_symbols *symbols);
+//token
+int			count_Token(token *Token);
 
 #endif

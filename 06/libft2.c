@@ -14,7 +14,7 @@ char	*ft_strdup(char *s)
 	char	*p;
 
 	i = ft_strlen(s);
-	p = malloc(sizeof(char) * i + 1);
+	p = malloc(sizeof(char) * (i + 1));
     if(p == NULL)
         return(NULL);
 	ft_strcopy(p, s);

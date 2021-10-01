@@ -65,7 +65,7 @@ char	*ft_substr2para(char *p)
 	len = 0;
 	while(p[len] != ')')
 		len++;
-	re = malloc(sizeof(char) * len + 1);
+	re = malloc(sizeof(char) * (len + 1));
 	j = 0;
 	while(len--)
 	{
@@ -76,6 +76,17 @@ char	*ft_substr2para(char *p)
 	return(re);
 }
 
+void	addfront_symbol(t_symbols **symbols, char *s, int memory)
+{
+	t_symbols	*new;
+
+	new = malloc(sizeof(t_symbols) * 1);
+	new->memory = memory;
+	new->symbol = ft_strdup(s);
+	new->next = *symbols;
+	*symbols = new;
+}
+
 void	add_para_symbol(t_symbols **symbols, char *p, token *Token)
 {
 	int		memory;
@@ -83,6 +94,6 @@ void	add_para_symbol(t_symbols **symbols, char *p, token *Token)
 
 	memory = count_Token(Token);
 	s = ft_substr2para(p + 1);
-	add_symbol(symbols, s, memory);
+	addfront_symbol(symbols, s, memory);
 	free(s);
 }
