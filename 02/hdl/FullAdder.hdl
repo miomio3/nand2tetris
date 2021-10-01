@@ -15,7 +15,7 @@ CHIP FullAdder {
     PARTS:
 HalfAdder(a=b,b=c,sum=w1,carry=w2);
 HalfAdder(a=a,b=w1,sum=sum,carry=w4);
-Or(a=b,b=c,out=w3);
-Mux(a=w2,b=w3,sel=a,out=carry);
+Or(a=w2,b=w4,out=carry);
+//Mux(a=w2,b=w3,sel=a,out=carry);
     // Put you code here:
 }

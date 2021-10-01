@@ -30,8 +30,6 @@ typedef struct  s_symbols
     int                 memory;
 }               t_symbols;
 
-//asm
-void		assembler(void);
 //libft
 void        ft_bzero(void *s, int n);
 void        ft_strcopy(char *ret, char *array);
@@ -46,6 +44,6 @@ void         read_file(int fd, char *array, char **assembly);
 void         open_file(int *fd, char **argv, char *array);
 //symbol_table
 t_symbols    *init_symbol_table(void);
-void          add_symbol(t_symbols **symbols, char *s, int memory);
+int          add_symbol(t_symbols **symbols, char *s, int memory);
 
 #endif

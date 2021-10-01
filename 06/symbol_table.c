@@ -1,32 +1,57 @@
 #include "asm.h"
 
-int    add_symbol(t_symbols **symbols, char *s, int memory)
+void    add_symbol(t_symbols **symbols, char *s, int memory)
 {
     t_symbols   *t;
-    t_symbols   *p;
 
     t = malloc(sizeof(t_symbols));
-    if(t == NULL)
-        return(ERROR);
-    t->symbol = ft_strdup(s);
+    t->symbol = strdup(s);
     t->memory = memory;
     t->next = NULL;
-    p = *symbols;
-    while(p != NULL)
-        p = p->next;
-    p = t;
-    return(NOERROR);
+    while(*symbols != NULL)
+        symbols = &((*symbols)->next);
+    *symbols = t;
+}
+
+void	add_r(t_symbols **symbols)
+{
+	char	*s;
+	int		i;
+	int		ten;
+	int		si;
+
+	s = malloc(sizeof(char) * 4);
+	si = 0;
+	s[si] = 'R';
+	si++;
+	i = 0;
+	while(i < 16)
+	{
+		si = 1;
+		ten = i / 10;
+		if(ten > 0)
+			s[si++] = '0' + ten;
+		s[si++] = '0' + i % 10;
+		s[si] = '\0';
+		add_symbol(symbols, s, i);
+		i++;
+	}
 }
 
 t_symbols    *init_symbol_table(void)
 {
-    t_symbols  *symbols;
+    t_symbols 	**symbols;
+	t_symbols	*head;
 
-    symbols = NULL;
-    add_symbol(&symbols, "SP", 0);
-    add_symbol(&symbols, "LCL", 1);
-    printf("%d\n", symbols->memory);
-    printf("%s\n", symbols->symbol);
-    printf("%d\n", symbols->next->memory);
-    printf("%s\n", symbols->next->symbol);
+	symbols = &head;
+	*symbols = NULL;
+    add_symbol(symbols, "SP", 0);
+    add_symbol(symbols, "LCL", 1);
+    add_symbol(symbols, "ARG", 2);
+	add_symbol(symbols, "THIS", 3);
+	add_symbol(symbols, "THAT", 4);
+	add_symbol(symbols, "SCREEN", 16384);
+	add_symbol(symbols, "KBD", 24576);
+	add_r(symbols);
+	return(head);
 }

@@ -1,25 +1,9 @@
 #include "asm.h"
 
-void    init_array(char **array)
+void	assembler(void)
 {
-    *array = malloc(sizeof(char) * 101);
-    if(*array == NULL)
-        exit(-1);
-    ft_bzero(*array, 101);
-}
+	t_symbols	*symbols;
 
-int main(int argc, char **argv)
-{
-    char    *array;
-    char    *assembly;
-    int     fd;
-
-    init_array(&array);
-    open_file(&fd, argv, array);
-    read_file(fd, array, &assembly);
-    init_symbol_table();
-    //printf("%s", assembly);//debug
-    safe_free(array);
-    safe_free(assembly);
-    return(0);
+	symbols = init_symbol_table();
+	
 }
