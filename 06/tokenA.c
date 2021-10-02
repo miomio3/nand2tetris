@@ -22,6 +22,23 @@ char	*pick_var(char *s)
 	return(re);
 }
 
+int	convert2num(char *s)
+{
+	int	re;
+	int	len;
+	int	i;
+
+	len = ft_strlen(s);
+	i = 0;
+	re = 0;
+	while(i < len)
+	{
+		re = 10 * re + s[i] - '0';
+		i++;
+	}
+	return(re);
+}
+
 void	add_Atoken(t_symbols **symbols, char *s, token **Token)
 {
 	token	**p;
@@ -36,7 +53,10 @@ void	add_Atoken(t_symbols **symbols, char *s, token **Token)
 	(*p)->save = NULL;
 	(*p)->assign = NULL;
 	var = pick_var(s + 1);
-	(*p)->memory = search_symbol(symbols, var);
+	if(is_num(var) == YES)
+		(*p)->memory = convert2num(var);
+	else
+		(*p)->memory = search_symbol(symbols, var);
 	(*p)->order = count_Token(*Token) - 2;
 	free(var);
 }

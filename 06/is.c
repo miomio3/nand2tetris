@@ -41,3 +41,17 @@ int	is_A(char *s)
 	}
 	return(NOEXIST);
 }
+
+int	is_num(char *s)
+{
+	int	i;
+
+	i = 0;
+	while(s[i])
+	{
+		if(!(s[i] >= '0' && s[i] <= '9'))
+			return(NO);
+		i++;
+	}
+	return(YES);
+}

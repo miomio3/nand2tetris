@@ -28,6 +28,12 @@ typedef enum
 	J
 }		AorC;
 
+typedef enum
+{
+    YES,
+    NO
+}yorn;
+
 typedef struct	token
 {
 	int				type;//A命令かC命令か
@@ -90,5 +96,6 @@ void		add_Jtoken(char *s, token **Token);
 int			is_M(char *s);
 int			is_D(char *s);
 int			is_A(char *s);
+int     	is_num(char *s);
 
 #endif
