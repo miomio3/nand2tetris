@@ -5,7 +5,7 @@ void    add_symbol(t_symbols **symbols, char *s, int memory)
     t_symbols   *t;
 
     t = malloc(sizeof(t_symbols));
-    t->symbol = strdup(s);
+    t->symbol = ft_strdup(s);
     t->memory = memory;
     t->next = NULL;
     while(*symbols != NULL)
@@ -96,4 +96,21 @@ void	add_para_symbol(t_symbols **symbols, char *p, token *Token)
 	s = ft_substr2para(p + 1);
 	addfront_symbol(symbols, s, memory);
 	free(s);
+}
+
+int	search_symbol(t_symbols **symbols, char *var)
+{
+	t_symbols	*p;
+	int			prev_mem;
+
+	p = *symbols;
+	while(p != NULL)
+	{
+		if(ft_strcmp(p->symbol, var) == 0)
+			return(p->memory);
+		prev_mem = p->memory;
+		p = p->next;
+	}
+	add_symbol(symbols, var, prev_mem + 1);
+	return(prev_mem + 1);
 }

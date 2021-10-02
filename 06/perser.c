@@ -8,23 +8,6 @@ char	*nl(char *p)
     return(p);
 }
 
-int	search_symbol(t_symbols **symbols, char *var)
-{
-	t_symbols	*p;
-	int			prev_mem;
-
-	p = *symbols;
-	while(p != NULL)
-	{
-		if(p->symbol == var)
-			return(p->memory);
-		prev_mem = p->memory;
-		p = p->next;
-	}
-	add_symbol(symbols, var, prev_mem + 1);
-	return(prev_mem + 1);
-}
-
 token	*perser(char *assembly, t_symbols *symbols)
 {
     char    *p;
@@ -53,12 +36,20 @@ token	*perser(char *assembly, t_symbols *symbols)
 			p = nl(p);
 			continue;
 		}
-        /*else
+        else
 		{
 			add_Ctoken();
 			p = nl(p);
 			continue;
-		} */
+		}
     }
+	while(symbols->next)//debug
+	{
+		printf("%d\n", symbols->memory);
+		printf("%s\n", symbols->symbol);
+		symbols = symbols->next;
+	}
+	printf("%d\n", symbols->memory);
+	printf("%s\n", symbols->symbol);
 	return(Token);
 }
