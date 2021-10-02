@@ -8,6 +8,20 @@ char	*nl(char *p)
     return(p);
 }
 
+int	is_equal2nl(char *s)
+{
+	int	i;
+
+	i = 0;
+	while(!(s[i] == '/' && s[i + 1] == '/') && s[i] != ' ' && s[i] != '\n')
+	{
+		if(s[i] == '=')
+			return(EXIST);
+		i++;
+	}
+	return(NOEXIST);
+}
+
 token	*perser(char *assembly, t_symbols *symbols)
 {
     char    *p;
@@ -36,20 +50,18 @@ token	*perser(char *assembly, t_symbols *symbols)
 			p = nl(p);
 			continue;
 		}
-        else
+        else if(is_equal2nl(p) == EXIST)
 		{
 			add_Ctoken(p, &Token);
 			p = nl(p);
 			continue;
 		}
+		else
+		{
+			add_Jtoken(p, &Token);
+			p = nl(p);
+			continue;
+		}
     }
-	while(symbols->next)//debug
-	{
-		printf("%d\n", symbols->memory);
-		printf("%s\n", symbols->symbol);
-		symbols = symbols->next;
-	}
-	printf("%d\n", symbols->memory);
-	printf("%s\n", symbols->symbol);
 	return(Token);
 }

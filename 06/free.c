@@ -13,18 +13,18 @@ void	free_symbols(t_symbols **symbols)
 	}
 }
 
-void	free_token(t_token	**Token)
+void	free_token(token	**Token)
 {
-	t_token	*p;
+	token	*p;
 
-	while((*token))
+	while((*Token))
 	{
-		p = (*token)->next;
-		if((*token)->save != NULL)
-			free((*token)->save);
-		if((*token)->assign != NULL)
-			free((*token)->assign);
-		free((*token));
-		*token = p;
+		p = (*Token)->next;
+		if((*Token)->save != NULL)
+			free((*Token)->save);
+		if((*Token)->assign != NULL)
+			free((*Token)->assign);
+		free((*Token));
+		*Token = p;
 	}
 }

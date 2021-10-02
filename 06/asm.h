@@ -24,7 +24,8 @@ typedef enum
 typedef enum
 {
 	A,
-	C
+	C,
+	J
 }		AorC;
 
 typedef struct	token
@@ -48,6 +49,7 @@ typedef struct	s_symbols
 void		assembler(char *assembly);
 //free
 void		free_symbols(t_symbols **symbols);
+void		free_token(token	**Token);
 //libft
 void		ft_bzero(void *s, int n);
 void		ft_strcopy(char *ret, char *array);
@@ -61,7 +63,7 @@ int			ft_strcmp(char *s1, char *s2);
 //file
 void		read_file(int fd, char *array, char **assembly);
 void		open_file(int *fd, char **argv, char *array);
-int			open_file2(int *fd, char **argv, char *array);
+int			open_file2(int *fd, char *file_name);
 //symbol_table
 t_symbols	*init_symbol_table(void);
 void		add_symbol(t_symbols **symbols, char *s, int memory);
@@ -75,5 +77,7 @@ int			count_Token(token *Token);
 void		add_Atoken(t_symbols **symbols, char *s, token **Token);
 //tokenC
 void		add_Ctoken(char *s, token **Token);
+//tokenJ
+void		add_Jtoken(char *s, token **Token);
 
 #endif
