@@ -9,7 +9,7 @@ char	*pick_var(char *s)
 
 	p = s;
 	len = 0;
-	while(!(p[len] == '/' && p[len + 1] == '/') && p[len] != ' ' && p[len] != '\n')
+	while(!(p[len] == '/' && p[len + 1] == '/') && p[len] != ' ' && p[len] != '\n' && p[len] != 13)
 		len++;
 	re = malloc(sizeof(char) * (len + 1));
 	i = 0;

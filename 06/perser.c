@@ -2,9 +2,10 @@
 
 char	*nl(char *p)
 {
-    while(*p != '\n')
+    while(*p != '\n' && *p != '\0')
         p++;
-    p++;
+    if(*p == '\n')
+		p++;
     return(p);
 }
 
@@ -33,7 +34,7 @@ token	*perser(char *assembly, t_symbols *symbols)
     {
         while(ft_isspace(p))
             p++;
-        if((*p == '/' && *p == '/') || *p == '\n')
+        if((p[0] == '/' && p[1] == '/') || p[0] == '\n' || p[0] == 13)
         {
             p = nl(p);
             continue;

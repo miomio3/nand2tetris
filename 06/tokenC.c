@@ -34,11 +34,11 @@ char	*ft_substr_equal2nl(char *s)
 	s++;
 	p = s;
 	len = 0;
-	while(!(p[len] == '/' && p[len + 1] == '/') && p[len] != ' ' && p[len] != '\n')
+	while(!(p[len] == '/' && p[len + 1] == '/') && p[len] != ' ' && p[len] != '\n' && p[len] != 13)
 		len++;
 	re = malloc(sizeof(char) * (len + 1));
 	i = 0;
-	while(!(p[i] == '/' && p[i + 1] == '/') && p[i] != ' ' && p[i] != '\n')
+	while(!(p[i] == '/' && p[i + 1] == '/') && p[i] != ' ' && p[i] != '\n' && p[i] != 13)
 	{
 		re[i] = p[i];
 		i++;

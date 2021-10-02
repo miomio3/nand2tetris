@@ -14,7 +14,7 @@ void	write_Abinary(int fd, token *Token)
 	i = 15;
 	while(i--)
 	{
-		bit = (memory >> i) & 1;
+		bit = (memory>>i) & 1;
 		s[14 - i] = '0' + bit;
 	}
 	write2file(fd, s);
