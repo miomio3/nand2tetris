@@ -1,14 +1,5 @@
 #include "asm.h"
 
-char	*nl(char *p)
-{
-    while(*p != '\n' && *p != '\0')
-        p++;
-    if(*p == '\n')
-		p++;
-    return(p);
-}
-
 int	is_equal2nl(char *s)
 {
 	int	i;
@@ -39,12 +30,6 @@ token	*perser(char *assembly, t_symbols *symbols)
             p = nl(p);
             continue;
         }
-		else if(*p == '(')
-		{
-			add_para_symbol(&symbols, p, Token);
-			p = nl(p);
-			continue;
-		}
 		else if(*p == '@')
 		{
 			add_Atoken(&symbols, p, &Token);

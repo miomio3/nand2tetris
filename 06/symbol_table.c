@@ -38,7 +38,26 @@ void	add_r(t_symbols **symbols)
 	}
 }
 
-t_symbols    *init_symbol_table(void)
+void		add_para(t_symbols **symbols, char *assembly, token *Token)
+{
+	char	*p;
+
+	p = assembly;
+	while(*p)
+	{
+		while(ft_isspace(p))
+            p++;
+		if(*p == '(')
+		{
+			add_para_symbol(symbols, p, Token);
+			printf("%d\n", (*symbols)->memory);//debug
+			printf("%s\n", (*symbols)->symbol);//debug
+		}
+		p = nl(p);
+	}
+}
+
+t_symbols    *init_symbol_table(char *assembly, token *Token)
 {
     t_symbols 	**symbols;
 	t_symbols	*head;
@@ -53,6 +72,7 @@ t_symbols    *init_symbol_table(void)
 	add_symbol(symbols, "SCREEN", 16384);
 	add_symbol(symbols, "KBD", 24576);
 	add_r(symbols);
+	add_para(symbols, assembly, Token);//tokenできてないうちから、add_parasymbolできないので、修正が必要
 	return(head);
 }
 
@@ -76,7 +96,7 @@ char	*ft_substr2para(char *p)
 	return(re);
 }
 
-void	addfront_symbol(t_symbols **symbols, char *s, int memory)
+t_symbols	**addfront_symbol(t_symbols **symbols, char *s, int memory)
 {
 	t_symbols	*new;
 
@@ -85,6 +105,7 @@ void	addfront_symbol(t_symbols **symbols, char *s, int memory)
 	new->symbol = ft_strdup(s);
 	new->next = *symbols;
 	*symbols = new;
+	return(symbols);
 }
 
 void	add_para_symbol(t_symbols **symbols, char *p, token *Token)
@@ -92,9 +113,9 @@ void	add_para_symbol(t_symbols **symbols, char *p, token *Token)
 	int		memory;
 	char	*s;
 
-	memory = count_Token(Token);
+	memory = count_Token(Token) - 1;
 	s = ft_substr2para(p + 1);
-	addfront_symbol(symbols, s, memory);
+	symbols = addfront_symbol(symbols, s, memory);
 	free(s);
 }
 
