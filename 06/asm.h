@@ -32,8 +32,8 @@ typedef struct	token
 {
 	int				type;//A命令かC命令か
 	int				memory;//A命令時の数字
-    char			*save;//C命令の時のA=など
-    char			*assign;//C命令の時のD-1など
+    char			*save;//C命令の時のA=など。jmp命令時はD;JMPのDが入る。
+    char			*assign;//C命令の時のD-1など。jmp命令時はJMPが入る。
 	int				order;//何番目の命令か
     struct token	*next;
 }				token;
@@ -47,6 +47,12 @@ typedef struct	s_symbols
 
 //asm
 void		assembler(char *assembly);
+//binary
+void		write_binary(int fd, token *token, t_symbols *symbols);
+//Cbinary
+void		write_Cbinary(int fd, token *Token);
+//Jbinary
+void		write_Jbinary(int fd, token *Token);
 //free
 void		free_symbols(t_symbols **symbols);
 void		free_token(token	**Token);
@@ -64,6 +70,7 @@ int			ft_strcmp(char *s1, char *s2);
 void		read_file(int fd, char *array, char **assembly);
 void		open_file(int *fd, char **argv, char *array);
 int			open_file2(int *fd, char *file_name);
+void		write2file(int fd, char *s);
 //symbol_table
 t_symbols	*init_symbol_table(void);
 void		add_symbol(t_symbols **symbols, char *s, int memory);
@@ -79,5 +86,9 @@ void		add_Atoken(t_symbols **symbols, char *s, token **Token);
 void		add_Ctoken(char *s, token **Token);
 //tokenJ
 void		add_Jtoken(char *s, token **Token);
+//is
+int			is_M(char *s);
+int			is_D(char *s);
+int			is_A(char *s);
 
 #endif

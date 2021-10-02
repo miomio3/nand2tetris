@@ -31,3 +31,8 @@ void	read_file(int fd, char *array, char **assembly)
         ft_bzero(array, 101);
     }
 }
+
+void	write2file(int fd, char *s)
+{
+	write(fd, s, ft_strlen(s));
+}

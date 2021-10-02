@@ -3,7 +3,7 @@
 @i
  @add
 
-AB=C
+AMD=D
 //
   D;JMP
   //
