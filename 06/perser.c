@@ -38,7 +38,7 @@ token	*perser(char *assembly, t_symbols *symbols)
 		}
         else
 		{
-			add_Ctoken();
+			add_Ctoken(p, &Token);
 			p = nl(p);
 			continue;
 		}

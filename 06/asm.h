@@ -31,8 +31,8 @@ typedef struct	token
 {
 	int				type;//A命令かC命令か
 	int				memory;//A命令時の数字
-    char			*s1;//C命令の時のA=など
-    char			*s2;//C命令の時のD-1など
+    char			*save;//C命令の時のA=など
+    char			*assign;//C命令の時のD-1など
 	int				order;//何番目の命令か
     struct token	*next;
 }				token;
@@ -46,6 +46,8 @@ typedef struct	s_symbols
 
 //asm
 void		assembler(char *assembly);
+//free
+void		free_symbols(t_symbols **symbols);
 //libft
 void		ft_bzero(void *s, int n);
 void		ft_strcopy(char *ret, char *array);
@@ -59,6 +61,7 @@ int			ft_strcmp(char *s1, char *s2);
 //file
 void		read_file(int fd, char *array, char **assembly);
 void		open_file(int *fd, char **argv, char *array);
+int			open_file2(int *fd, char **argv, char *array);
 //symbol_table
 t_symbols	*init_symbol_table(void);
 void		add_symbol(t_symbols **symbols, char *s, int memory);
@@ -70,5 +73,7 @@ token		*perser(char *assembly, t_symbols *symbols);
 int			count_Token(token *Token);
 //tokenA
 void		add_Atoken(t_symbols **symbols, char *s, token **Token);
+//tokenC
+void		add_Ctoken(char *s, token **Token);
 
 #endif

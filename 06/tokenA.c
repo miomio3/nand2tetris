@@ -33,7 +33,10 @@ void	add_Atoken(t_symbols **symbols, char *s, token **Token)
 	*p = malloc(sizeof(token) * 1);
 	(*p)->next = NULL;
 	(*p)->type = A;
+	(*p)->save = NULL;
+	(*p)->assign = NULL;
 	var = pick_var(s + 1);
 	(*p)->memory = search_symbol(symbols, var);
 	(*p)->order = count_Token(*Token) - 2;
+	free(var);
 }

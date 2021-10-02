@@ -1,17 +1,28 @@
 #include "asm.h"
 
-void    open_file(int *fd, char **argv, char *array)
+void	open_file(int *fd, char **argv, char *array)
 {
-    *fd = open(argv[1], O_RDONLY);
-    if(*fd == -1)
-    {
-        printf("File couldn't opne.\n");
-        free(array);
-        exit(-1);
-    }
+	*fd = open(argv[1], O_RDONLY);
+	if(*fd == -1)
+	{
+		printf("File couldn't opne.\n");
+		free(array);
+		exit(-1);
+	}
 }
 
-void    read_file(int fd, char *array, char **assembly)
+int	open_file2(int *fd, char *file_name)
+{
+	*fd = open(file_name, O_WRONLY);
+	if(*fd == -1)
+	{
+		printf("File couldn't opne.\n");
+		return(ERROR);
+	}
+	return(NOERROR);
+}
+
+void	read_file(int fd, char *array, char **assembly)
 {
     *assembly = NULL;
     while(read(fd, array, 100) > 0)
