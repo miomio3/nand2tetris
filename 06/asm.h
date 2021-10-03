@@ -80,9 +80,12 @@ int			open_file2(int *fd, char *file_name);
 void		write2file(int fd, char *s);
 //symbol_table
 t_symbols    *init_symbol_table(char *assembly, token *Token);
-void		add_symbol(t_symbols **symbols, char *s, int memory);
-void		add_para_symbol(t_symbols **symbols, char *p, token *Token);
 int			search_symbol(t_symbols **symbols, char *var);
+void    	add_symbol(t_symbols **symbols, char *s, int memory);
+void		add_symbol(t_symbols **symbols, char *s, int memory);
+void		add_para_symbol(t_symbols **symbols, char *p, int memory);
+void		add_para(t_symbols **symbols, char *assembly);
+t_symbols	**addfront_symbol(t_symbols **symbols, char *s, int memory);
 //perser
 token		*perser(char *assembly, t_symbols *symbols);
 //token
