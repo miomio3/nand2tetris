@@ -17,10 +17,11 @@ void	add_Jtoken(char *s, token **Token)
 	s = s + 2;
 	(*p)->assign = malloc(sizeof(char) * 4);
 	i = 0;
-	while(!(s[i] == '/' && s[i + 1] == '/') && s[i] != ' ' && s[i] != '\n')
+	while(!(s[i] == '/' && s[i + 1] == '/') && s[i] != ' ' && s[i] != '\n' && s[i] != 13)
 	{
 		(*p)->assign[i] = s[i];
 		i++;
 	}
+	(*p)->assign[i] = '\0';
 	(*p)->order = count_Token(*Token) - 2;
 }

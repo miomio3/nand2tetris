@@ -3,7 +3,7 @@
 void	write_Abinary(int fd, token *Token)
 {
 	char			*s;
-	unsigned char	memory;
+	int				memory;
 	unsigned char	bit;
 	int				i;
 
