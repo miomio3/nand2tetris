@@ -22,5 +22,6 @@ void	add_Jtoken(char *s, token **Token)
 		(*p)->assign[i] = s[i];
 		i++;
 	}
+	(*p)->assign[i] = '\0';
 	(*p)->order = count_Token(*Token) - 2;
 }
