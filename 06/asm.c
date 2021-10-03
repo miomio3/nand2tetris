@@ -6,7 +6,7 @@ void	assembler(char *assembly)
 	t_symbols	*symbols;
 	token		*Token;
 
-	symbols = init_symbol_table();
+	symbols = init_symbol_table(assembly, Token);//tokenできてないうちから、add_parasymbolできないので、修正が必要
 	Token = perser(assembly, symbols);
 	/* while(symbols)//debug
 	{

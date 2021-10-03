@@ -36,3 +36,12 @@ int	ft_strcmp(char *s1, char *s2)
 		return(1);
 	return(0);
 }
+
+char	*nl(char *p)
+{
+    while(*p != '\n' && *p != '\0')
+        p++;
+    if(*p == '\n')
+		p++;
+    return(p);
+}

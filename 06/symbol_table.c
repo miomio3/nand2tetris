@@ -38,7 +38,7 @@ void	add_r(t_symbols **symbols)
 	}
 }
 
-t_symbols    *init_symbol_table(void)
+t_symbols    *init_symbol_table(char *assembly, token *Token)
 {
     t_symbols 	**symbols;
 	t_symbols	*head;
@@ -53,49 +53,8 @@ t_symbols    *init_symbol_table(void)
 	add_symbol(symbols, "SCREEN", 16384);
 	add_symbol(symbols, "KBD", 24576);
 	add_r(symbols);
+	add_para(symbols, assembly);
 	return(head);
-}
-
-char	*ft_substr2para(char *p)
-{
-	int		len;
-	char	*re;
-	int		j;
-
-	len = 0;
-	while(p[len] != ')')
-		len++;
-	re = malloc(sizeof(char) * (len + 1));
-	j = 0;
-	while(len--)
-	{
-		re[j] = p[j];
-		j++;
-	}
-	re[j] = '\0';
-	return(re);
-}
-
-void	addfront_symbol(t_symbols **symbols, char *s, int memory)
-{
-	t_symbols	*new;
-
-	new = malloc(sizeof(t_symbols) * 1);
-	new->memory = memory;
-	new->symbol = ft_strdup(s);
-	new->next = *symbols;
-	*symbols = new;
-}
-
-void	add_para_symbol(t_symbols **symbols, char *p, token *Token)
-{
-	int		memory;
-	char	*s;
-
-	memory = count_Token(Token);
-	s = ft_substr2para(p + 1);
-	addfront_symbol(symbols, s, memory);
-	free(s);
 }
 
 int	search_symbol(t_symbols **symbols, char *var)
