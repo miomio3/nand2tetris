@@ -55,8 +55,6 @@ void		add_para(t_symbols **symbols, char *assembly)
 		if(*p == '(')
 		{
 			add_para_symbol(symbols, p, i);
-			printf("%d\n", (*symbols)->memory);//debug
-			printf("%s\n", (*symbols)->symbol);//debug
 			p = nl(p);
 			continue;
 		}
