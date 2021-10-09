@@ -1,0 +1,10 @@
+@SP
+A=M-1
+D=M
+@ARG
+A=M
+A=A+1
+A=A+1
+M=D
+@SP
+M=M-1
