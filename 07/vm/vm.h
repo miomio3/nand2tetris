@@ -21,6 +21,12 @@ typedef enum
 	NOEXIST
 }		exist;
 
+typedef enum
+{
+	TRUE,
+	FALSE
+}		true_false;
+
 //file
 void		read_file(int fd, char *array, char **assembly);
 void		open_file(int *fd, char **argv, char *array);
@@ -40,10 +46,15 @@ char		*ft_strdup(char *s);
 int			ft_strcmp(char *s1, char *s2);
 char		*nl(char *p);
 //pick
-char		*pick_first(char **str);
+char		*pick2space(char **str);
+int			pick2space_num(char **str);
 //pop
 void		pop(char *p);
+//push
+void		push(char **p, int fd, char *file_name);
 //vm
-void		vm(char *vm_code);
+void		vm(char *vm_code, char *file_name);
+//write_asm.h
+void		push_assign_inc(int fd);
 
 #endif

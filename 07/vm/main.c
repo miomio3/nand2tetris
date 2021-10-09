@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
     init_buf(&buf);
     open_file(&fd, argv, buf);
     read_file(fd, buf, &vm_code);
-	vm(vm_code);
+	vm(vm_code, argv[1]);
 	close(fd);
     safe_free(buf);
     safe_free(vm_code);

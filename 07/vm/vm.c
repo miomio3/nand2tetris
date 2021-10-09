@@ -1,30 +1,31 @@
 #include "vm.h"
 
-void	perse_write(int fd, char *p)
+void	perse_write(int fd, char *p, char *file_name)
 {
 	char	*first;
 
-	first = pick_first(&p);
-	printf("%s\n", first);
+	first = pick2space(&p);
 	while(ft_isspace(p))
             p++;
-	first = pick_first(&p);
-	printf("%s\n", first);
-	/* if(ft_strcmp(first, "pop") == 0)
-		pop(fd, p);
-	else if(ft_strcmp(first, "push") == 0)
+	if(ft_strcmp(first, "push") == 0)
+	{
+		push(&p, fd, file_name);
+		p = nl(p);
+	}
+	/* else if(ft_strcmp(first, "pop") == 0)
 		push(fd, p);
 	else
 		inst(fd, p); */
+	free(first);
 }
 
-void	vm(char *vm_code)
+void	vm(char *vm_code, char *file_name)
 {
 	int		fd;
 	char	*p;
 
-	/* if(open_file2(&fd, "vm.asm") == ERROR)
-		return; */
+	if(open_file2(&fd, "vm.asm") == ERROR)
+		return;
 	p = vm_code;
 	while(*p)
 	{
@@ -34,7 +35,7 @@ void	vm(char *vm_code)
             p = nl(p);
 		else
 		{
-			perse_write(fd, p);
+			perse_write(fd, p, file_name);
 			p = nl(p);
 		}
 	}
