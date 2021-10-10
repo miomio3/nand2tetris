@@ -21,8 +21,8 @@ out8	DMux8Way(int in, int sel[3])
 	out.h = And(outa2d.d, sel[2]);
 	return(out);
 }
-/* 
-int main(void)
+
+/* int main(void)
 {
 	out8	out;
 	int		sel[3];
