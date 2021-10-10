@@ -12,12 +12,14 @@ int	main(int argc, char **argv)
 {
 	char    *buf;
     char    *vm_code;
+	char	*filename;
     int     fd;
 
     init_buf(&buf);
     open_file(&fd, argv, buf);
     read_file(fd, buf, &vm_code);
-	vm(vm_code, argv[1]);
+	filename = pick_filename(argv[1]);
+	vm(vm_code, filename);
 	close(fd);
     safe_free(buf);
     safe_free(vm_code);

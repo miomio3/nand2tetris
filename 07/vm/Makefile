@@ -1,6 +1,6 @@
 NAME = a.out
 CC = gcc 
-SRC = main.c libft.c libft2.c file.c free.c vm.c pick.c push.c
+SRC = main.c libft.c libft2.c libft3.c file.c free.c vm.c pick.c push.c write_asm.c
 
 all		:$(NAME)
 $(NAME)	:$(SRC)

@@ -1,3 +1,6 @@
 
 //
-push constant  2
+push argument 2
+push local 2
+push this 2
+push that 2

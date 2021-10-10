@@ -45,3 +45,10 @@ char	*nl(char *p)
 		p++;
     return(p);
 }
+
+char	*next_space(char **p)
+{
+	while(**p != ' ')
+		(*p)++;
+	return(*p);
+}

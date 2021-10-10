@@ -45,9 +45,15 @@ int			ft_isspace(char *p);
 char		*ft_strdup(char *s);
 int			ft_strcmp(char *s1, char *s2);
 char		*nl(char *p);
+char		*next_space(char **p);
+//libft3
+char		*ft_substr(char *s, unsigned int start, size_t len);
+void		ft_putnbr_fd(int n, int fd);
+void		ft_putchar_fd(char c, int fd);
 //pick
-char		*pick2space(char **str);
+char		*pick2space(char *s);
 int			pick2space_num(char **str);
+char		*pick_filename(char *arg);
 //pop
 void		pop(char *p);
 //push
@@ -56,5 +62,10 @@ void		push(char **p, int fd, char *file_name);
 void		vm(char *vm_code, char *file_name);
 //write_asm.h
 void		push_assign_inc(int fd);
+void		write_at(int fd);
+void		write_DeqA(int fd);
+void		write_assignDA(int num, int fd);
+void		write_DeqPTR(char *ptr , int num, int fd);
+void		write_DeqARG(char *arg, int num, int fd);
 
 #endif
