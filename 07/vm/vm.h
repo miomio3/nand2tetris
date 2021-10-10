@@ -50,12 +50,14 @@ char		*next_space(char **p);
 char		*ft_substr(char *s, unsigned int start, size_t len);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putchar_fd(char c, int fd);
+//neg_not
+void		neg_not(char *inst, int fd);
 //pick
 char		*pick2space(char *s);
 int			pick2space_num(char **str);
 char		*pick_filename(char *arg);
 //pop
-void		pop(char *p);
+void		pop(char **p, int fd, char *file_name);
 //push
 void		push(char **p, int fd, char *file_name);
 //vm
@@ -63,9 +65,15 @@ void		vm(char *vm_code, char *file_name);
 //write_asm.h
 void		push_assign_inc(int fd);
 void		write_at(int fd);
+void		write_nl(int fd);
+void		write_dec(int fd);
+void		write_AMD(int fd);
+void		write_Ainc(int fd);
+//write_asm2.c
 void		write_DeqA(int fd);
-void		write_assignDA(int num, int fd);
+void		write_MeqD(int fd);
 void		write_DeqPTR(char *ptr , int num, int fd);
 void		write_DeqARG(char *arg, int num, int fd);
+void		write_assignDA(int num, int fd);
 
 #endif

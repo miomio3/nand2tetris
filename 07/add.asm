@@ -2,10 +2,6 @@
 M=M-1
 A=M
 D=M
-@SP
-M=M-1
-A=M
+A=A-1
 D=D+M
-@SP
-A=M-1
 M=D

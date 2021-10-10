@@ -29,13 +29,13 @@ void	push_pointer(int num, int fd)
 void	push_args(char *arg, int num, int fd)
 {
 	write_assignDA(num, fd);
-	if(ft_strcmp(arg, "argument") == TRUE)
+	if(ft_strcmp(arg, "argument") == 0)
 		write_DeqARG("ARG", num, fd);
-	else if(ft_strcmp(arg, "local") == TRUE)
+	else if(ft_strcmp(arg, "local") == 0)
 		write_DeqARG("LCL", num, fd);
-	else if(ft_strcmp(arg, "this") == TRUE)
+	else if(ft_strcmp(arg, "this") == 0)
 		write_DeqARG("THIS", num, fd);
-	else if(ft_strcmp(arg, "that") == TRUE)
+	else if(ft_strcmp(arg, "that") == 0)
 		write_DeqARG("THAT", num, fd);
 }
 
@@ -49,13 +49,13 @@ void	push(char **p, int fd, char *file_name)
 	while(ft_isspace(*p))
         (*p)++;
 	third = pick2space_num(p);
-	if(ft_strcmp(second, "constant") == TRUE)
+	if(ft_strcmp(second, "constant") == 0)
 		push_constant(third, fd);
-	else if(ft_strcmp(second, "static") == TRUE)
+	else if(ft_strcmp(second, "static") == 0)
 		push_static(third, fd, file_name);
-	else if(ft_strcmp(second, "temp") == TRUE)
+	else if(ft_strcmp(second, "temp") == 0)
 		push_temp(third, fd);
-	else if(ft_strcmp(second, "pointer") == TRUE)
+	else if(ft_strcmp(second, "pointer") == 0)
 		push_pointer(third, fd);
 	else
 		push_args(second, third, fd);

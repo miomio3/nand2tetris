@@ -10,10 +10,11 @@ void	perse_write(int fd, char **p, char *file_name)
         (*p)++;
 	if(ft_strcmp(first, "push") == 0)
 		push(p, fd, file_name);
-	/* else if(ft_strcmp(first, "pop") == 0)
-		push(fd, p);
-	else
-		inst(fd, p); */
+	else if(ft_strcmp(first, "pop") == 0)
+		pop(p, fd, file_name);
+	else if(ft_strcmp(first, "neg") == 0 || ft_strcmp(first, "not") == 0)
+		neg_not(first, fd);
+		//elseif other inst
 	free(first);
 }
 

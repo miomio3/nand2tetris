@@ -29,12 +29,12 @@ int	ft_strcmp(char *s1, char *s2)
 	while(s1[i])
 	{
 		if(s1[i] != s2[i])
-			return(FALSE);
+			return(-1);
 		i++;
 	}
 	if(s2[i] != '\0')
-		return(FALSE);
-	return(TRUE);
+		return(-1);
+	return(0);
 }
 
 char	*nl(char *p)
@@ -48,7 +48,7 @@ char	*nl(char *p)
 
 char	*next_space(char **p)
 {
-	while(**p != ' ')
+	while(**p != ' ' && **p != '\0' && !(**p == '/' && *p[1] == '/') && **p != '\n' && **p != 13)
 		(*p)++;
 	return(*p);
 }
