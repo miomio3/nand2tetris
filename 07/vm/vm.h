@@ -52,6 +52,8 @@ void		ft_putnbr_fd(int n, int fd);
 void		ft_putchar_fd(char c, int fd);
 //neg_not
 void		neg_not(char *inst, int fd);
+//other_inst
+void		other_inst(char *inst, int fd);
 //pick
 char		*pick2space(char *s);
 int			pick2space_num(char **str);
@@ -69,6 +71,7 @@ void		write_nl(int fd);
 void		write_dec(int fd);
 void		write_AMD(int fd);
 void		write_Ainc(int fd);
+void		write_Adec(int fd);
 //write_asm2.c
 void		write_DeqA(int fd);
 void		write_MeqD(int fd);

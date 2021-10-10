@@ -34,3 +34,8 @@ void	write_assignDA(int num, int fd)
 	ft_putnbr_fd(num, fd);
 	write_DeqA(fd);
 }
+
+void	write_assign0(int fd)
+{
+	write2file(fd, "\n");
+}

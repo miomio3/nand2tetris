@@ -14,7 +14,8 @@ void	perse_write(int fd, char **p, char *file_name)
 		pop(p, fd, file_name);
 	else if(ft_strcmp(first, "neg") == 0 || ft_strcmp(first, "not") == 0)
 		neg_not(first, fd);
-		//elseif other inst
+	else
+		other_inst(first, fd);
 	free(first);
 }
 

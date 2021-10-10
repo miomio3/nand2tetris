@@ -29,3 +29,8 @@ void	write_Ainc(int fd)
 {
 	write2file(fd, "A=A+1\n");
 }
+
+void	write_Adec(int fd)
+{
+	write2file(fd, "A=A-1\n");
+}
