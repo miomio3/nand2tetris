@@ -15,7 +15,7 @@ void	and_inst(int fd)
 
 void	or_inst(int fd)
 {
-	write2file(fd, "M=D|M");
+	write2file(fd, "M=D|M\n");
 }
 
 void	cmp_inst(char *inst, int fd, int i)
