@@ -31,6 +31,7 @@ void	write_assignDA(int num, int fd)
 	char	*str;
 
 	write_at(fd);
+	printf("%d\n", num);
 	ft_putnbr_fd(num, fd);
 	write_DeqA(fd);
 }

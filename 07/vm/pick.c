@@ -29,8 +29,7 @@ int	pick2space_num(char **str)
 	re = 0;
 	while(**str != ' ' && **str != '\0' &&  !(**str == '/' && **str == '/')  && **str != '\n' && **str != 13)
 	{
-		re = re * 10;
-		re = **str - '0';
+		re = re * 10 + **str - '0';
 		(*str)++;
 	}
 	return(re);

@@ -49,6 +49,7 @@ void	push(char **p, int fd, char *file_name)
 	while(ft_isspace(*p))
         (*p)++;
 	third = pick2space_num(p);
+	printf("%d\n", third);
 	if(ft_strcmp(second, "constant") == 0)
 		push_constant(third, fd);
 	else if(ft_strcmp(second, "static") == 0)
