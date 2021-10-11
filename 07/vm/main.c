@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
     open_file(&fd, argv, buf);
     read_file(fd, buf, &vm_code);
 	filename = pick_filename(argv[1]);
+	printf("%s\n", filename);
 	vm(vm_code, filename);
 	close(fd);
     safe_free(buf);
