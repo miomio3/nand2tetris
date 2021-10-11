@@ -29,24 +29,41 @@ int	pick2space_num(char **str)
 	re = 0;
 	while(**str != ' ' && **str != '\0' &&  !(**str == '/' && **str == '/')  && **str != '\n' && **str != 13)
 	{
-		re = re * 10;
-		re = **str - '0';
+		re = re * 10 + **str - '0';
 		(*str)++;
 	}
 	return(re);
 }
 
+int	last_slash_index(char *p)
+{
+	int	last;
+	int	i;
+
+	last = 0;
+	i = 0;
+	while(p[i])
+	{
+		if(p[i] == '/')
+			last = i + 1;
+		i++;
+	}
+	return(last);
+}
+
 char	*pick_filename(char *arg)
 {
 	int		i;
+	int		start;
 	char	*re;
 
 	i = 0;
+	start = last_slash_index(arg);
 	while(arg[i])
 	{
 		if(arg[i] == '.' && arg[i + 1] == 'v' && arg[i + 2] == 'm')
 		{
-			re = ft_substr(arg, 0, i);
+			re = ft_substr(arg, start, i);
 			break;
 		}
 		i++;

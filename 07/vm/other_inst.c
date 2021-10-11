@@ -5,7 +5,7 @@ void	add_sub_inst(char *inst, int fd)
 	if(ft_strcmp(inst, "add") == 0)
 		write2file(fd, "D=D+M\nM=D\n");
 	else if(ft_strcmp(inst, "sub") == 0)
-		write2file(fd, "D=D-M\nM=D\n");
+		write2file(fd, "D=M-D\nM=D\n");
 }
 
 void	and_inst(int fd)

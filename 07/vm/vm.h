@@ -75,6 +75,7 @@ void		write_Adec(int fd);
 //write_asm2.c
 void		write_DeqA(int fd);
 void		write_MeqD(int fd);
+void		write_DeqM(int fd);
 void		write_DeqPTR(char *ptr , int num, int fd);
 void		write_DeqARG(char *arg, int num, int fd);
 void		write_assignDA(int num, int fd);
