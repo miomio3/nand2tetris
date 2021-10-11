@@ -10,6 +10,11 @@ void	write_MeqD(int fd)
 	write2file(fd, "M=D\n");
 }
 
+void	write_DeqM(int fd)
+{
+	write2file(fd, "D=M\n");
+}
+
 void	write_DeqPTR(char *ptr , int num, int fd)
 {
 	write_at(fd);

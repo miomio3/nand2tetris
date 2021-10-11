@@ -11,7 +11,8 @@ void	push_static(int num, int fd, char *filename)
 	write2file(fd, filename);
 	write2file(fd, ".");
 	ft_putnbr_fd(num, fd);
-	write_DeqA(fd);
+	write2file(fd, "\n");
+	write_DeqM(fd);
 }
 
 void	push_temp(int num, int fd)
