@@ -34,6 +34,10 @@ int			open_file2(int *fd, char *file_name);
 void		write2file(int fd, char *s);
 //free
 void    	safe_free(char *array);
+//functon
+void		function(char **p, int fd);
+//label
+void		label(char **p, int fd);
 //libft
 void		ft_bzero(void *s, int n);
 void		ft_strcopy(char *ret, char *array);
@@ -57,10 +61,19 @@ void		other_inst(char *inst, int fd, int i);
 //pick
 char		*pick2space(char *s);
 int			pick2space_num(char **str);
-char		*pick_filename(char *arg);
+char		*pick_direname(char *arg);
 //pop
+void		pop_args(char *arg, int third, int fd);
+void		pop_pointer(int third, int fd);
+void		pop_temp(int third, int fd);
+void		pop_static(int num, int fd, char *direname);
 void		pop(char **p, int fd, char *file_name);
 //push
+void		push_constant(int num, int fd);
+void		push_static(int num, int fd, char *direname);
+void		push_temp(int num, int fd);
+void		push_pointer(int num, int fd);
+void		push_args(char *arg, int num, int fd);
 void		push(char **p, int fd, char *file_name);
 //vm
 void		vm(char *vm_code, char *file_name);

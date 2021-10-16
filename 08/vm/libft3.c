@@ -4,11 +4,10 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*p;
 	size_t	i;
-	size_t	s_len;
 
 	if (s == NULL)
 		return (NULL);
-	len = len - start;
+	len = len - start + 1;
 	p = (char *)malloc(sizeof(char) * (len + 1));
 	if (p == NULL)
 		return (NULL);

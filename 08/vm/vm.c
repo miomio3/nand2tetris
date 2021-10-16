@@ -1,6 +1,6 @@
 #include "vm.h"
 
-void	perse_write(int fd, char **p, char *file_name, int i)
+void	perse_write(int fd, char **p, char *direname, int i)
 {
 	char	*first;
 
@@ -9,17 +9,21 @@ void	perse_write(int fd, char **p, char *file_name, int i)
 	while(ft_isspace(*p))
         (*p)++;
 	if(ft_strcmp(first, "push") == 0)
-		push(p, fd, file_name);
+		push(p, fd, direname);
 	else if(ft_strcmp(first, "pop") == 0)
-		pop(p, fd, file_name);
+		pop(p, fd, direname);
 	else if(ft_strcmp(first, "neg") == 0 || ft_strcmp(first, "not") == 0)
 		neg_not(first, fd);
+	else if(ft_strcmp(first, "label") == 0)
+		label(p, fd);
+	else if(ft_strcmp(first, "function") == 0)
+		function(p, fd);
 	else
 		other_inst(first, fd, i);
 	free(first);
 }
 
-void	vm(char *vm_code, char *file_name)
+void	vm(char *vm_code, char *direname)
 {
 	int		fd;
 	char	*p;
@@ -38,10 +42,11 @@ void	vm(char *vm_code, char *file_name)
             p = nl(p);
 		else
 		{
-			perse_write(fd, &p, file_name, i);
+			perse_write(fd, &p, direname, i);
 			p = nl(p);
 		}
 		i++;
 	}
+	write2file(fd, "\0");
 	close(fd);
 }
