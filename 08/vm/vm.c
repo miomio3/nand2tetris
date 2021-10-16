@@ -18,6 +18,14 @@ void	perse_write(int fd, char **p, char *direname, int i)
 		label(p, fd);
 	else if(ft_strcmp(first, "function") == 0)
 		function(p, fd);
+	else if(ft_strcmp(first, "goto") == 0)
+		goto_label(p, fd);
+	else if(ft_strcmp(first, "if-goto") == 0)
+		if_goto(p, fd);
+	else if(ft_strcmp(first, "return") == 0)
+		return_command(fd);
+	else if(ft_strcmp(first, "call") == 0)
+		call_command(p, fd);
 	else
 		other_inst(first, fd, i);
 	free(first);

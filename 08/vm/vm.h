@@ -34,10 +34,13 @@ int			open_file2(int *fd, char *file_name);
 void		write2file(int fd, char *s);
 //free
 void    	safe_free(char *array);
-//functon
-void		function(char **p, int fd);
-//label
+//flow_command
 void		label(char **p, int fd);
+void		goto_label(char **p, int fd);
+void		if_goto(char **p, int fd);
+//func_command
+void		return_command(int fd);
+void		function(char **p, int fd);
 //libft
 void		ft_bzero(void *s, int n);
 void		ft_strcopy(char *ret, char *array);
