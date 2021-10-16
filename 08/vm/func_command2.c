@@ -1,18 +1,5 @@
 #include "vm.h"
 
-void	function(char **p, int fd)
-{
-	int	local_num;
-
-	label(p, fd);
-	*p = next_space(p);
-	while(ft_isspace(*p))
-        (*p)++;
-	local_num = pick2space_num(p);
-	while(local_num--)
-		push_constant(0, fd);
-}
-
 void	set_endframe(char *var, int fd)
 {
 	write2file(fd, "@R5\nM=M-1\nA=M\nD=M\n");
@@ -42,9 +29,4 @@ void	return_command(int fd)
 	write2file(fd, "@ARG\nD=M\n@SP\nM=D+1\n");//SP=ARG+1
 	set_vars(fd);
 	goto_return(fd);
-}
-
-void	call_command(int fd)
-{
-	
 }

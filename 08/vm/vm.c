@@ -25,7 +25,7 @@ void	perse_write(int fd, char **p, char *direname, int i)
 	else if(ft_strcmp(first, "return") == 0)
 		return_command(fd);
 	else if(ft_strcmp(first, "call") == 0)
-		call_command(p, fd);
+		call_command(p, fd, i);
 	else
 		other_inst(first, fd, i);
 	free(first);

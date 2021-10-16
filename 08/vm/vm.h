@@ -40,6 +40,7 @@ void		goto_label(char **p, int fd);
 void		if_goto(char **p, int fd);
 //func_command
 void		return_command(int fd);
+void		call_command(char **p, int fd, int i);
 void		function(char **p, int fd);
 //libft
 void		ft_bzero(void *s, int n);

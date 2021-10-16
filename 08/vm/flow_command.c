@@ -3,7 +3,6 @@
 void	label(char **p, int fd)
 {
 	char	*label;
-	int		local_num;
 
 	label = pick2space(*p);
 	write2file(fd, "(");
