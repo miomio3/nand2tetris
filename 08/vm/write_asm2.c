@@ -44,3 +44,9 @@ void	write_assign0(int fd)
 {
 	write2file(fd, "\n");
 }
+
+void	init_SP(int fd)
+{
+	write2file(fd, "@256\nD=A\n@SP\nM=D\n");
+	write2file(fd, "@ARG\nM=D\n");
+}
