@@ -11,6 +11,7 @@ void	call_sysinit(char **p, int fd, int i)
 {
 	int		nargs;
 
+	init_SP(fd);
 	push_retaddr(fd, i);
 	push_addr("LCL", fd);
 	push_addr("ARG", fd);
@@ -35,7 +36,6 @@ void	function(char **p, int fd)
 	while(ft_isspace(*p))
         (*p)++;
 	local_num = pick2space_num(p);
-	printf("local_num = %d\n", local_num);
 	while(local_num--)
 		push_constant(0, fd);
 }

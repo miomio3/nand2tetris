@@ -73,21 +73,22 @@ void		other_inst(char *inst, int fd, int i);
 char		*pick2space(char *s);
 int			pick2space_num(char **str);
 char		*pick_direname(char *arg);
+char		*pick_filename(char *argv);
 //pop
 void		pop_args(char *arg, int third, int fd);
 void		pop_pointer(int third, int fd);
 void		pop_temp(int third, int fd);
-void		pop_static(int num, int fd, char *direname);
-void		pop(char **p, int fd, char *file_name);
+void		pop_static(int num, int fd, char *direname, char *filename);
+void		pop(char **p, int fd, char *file_name, char *filename);
 //push
 void		push_constant(int num, int fd);
-void		push_static(int num, int fd, char *direname);
+void		push_static(int num, int fd, char *direname, char *pick_filename);
 void		push_temp(int num, int fd);
 void		push_pointer(int num, int fd);
 void		push_args(char *arg, int num, int fd);
-void		push(char **p, int fd, char *file_name);
+void		push(char **p, int fd, char *direname, char *filename);
 //vm
-void		vm(char *vm_code, char *file_name, int asmfd);
+void		vm(char *vm_code, char *file_name, char *filename, int asmfd);
 //write_asm.h
 void		push_assign_inc(int fd);
 void		write_at(int fd);

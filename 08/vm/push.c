@@ -6,10 +6,12 @@ void	push_constant(int num, int fd)
 	push_assign_inc(fd);
 }
 
-void	push_static(int num, int fd, char *direname)
+void	push_static(int num, int fd, char *direname, char *filename)
 {
 	write_at(fd);
 	write2file(fd, direname);
+	write2file(fd, "_");
+	write2file(fd, filename);
 	write2file(fd, ".");
 	ft_putnbr_fd(num, fd);
 	write2file(fd, "\n");
@@ -45,7 +47,7 @@ void	push_args(char *arg, int num, int fd)
 	push_assign_inc(fd);
 }
 
-void	push(char **p, int fd, char *direname)
+void	push(char **p, int fd, char *direname, char *filename)
 {
 	char	*second;
 	int		third;
@@ -58,7 +60,7 @@ void	push(char **p, int fd, char *direname)
 	if(ft_strcmp(second, "constant") == 0)
 		push_constant(third, fd);
 	else if(ft_strcmp(second, "static") == 0)
-		push_static(third, fd, direname);
+		push_static(third, fd, direname, filename);
 	else if(ft_strcmp(second, "temp") == 0)
 		push_temp(third, fd);
 	else if(ft_strcmp(second, "pointer") == 0)

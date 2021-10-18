@@ -78,6 +78,40 @@ int	direname_0index(char *arg)
 	return(i + 1);
 }
 
+
+
+int	filename_lastindex(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while(arg[i])
+	{
+		if(arg[i] == '.' && arg[i + 1] == 'v' && arg[i + 2] == 'm')
+			break;
+		i++;
+	}
+	return(i - 1);
+}
+
+int	filename_0index(char *arg)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while(arg[i])
+	{
+		if(arg[i] == '.' && arg[i + 1] == 'v' && arg[i + 2] == 'm')
+			break;
+		i++;
+	}
+	j = 0;
+	while(arg[i] != '/')
+		i--;
+	return(i + 1);
+}
+
 char	*pick_direname(char *arg)
 {
 	int		start;
@@ -87,5 +121,17 @@ char	*pick_direname(char *arg)
 	start = direname_0index(arg);
 	last = direname_lastindex(arg);
 	re = ft_substr(arg, start, last);
+	return(re);
+}
+
+char	*pick_filename(char *argv)
+{
+	int		start;
+	int		last;
+	char	*re;
+
+	start = filename_0index(argv);
+	last = filename_lastindex(argv);
+	re = ft_substr(argv, start, last);
 	return(re);
 }
