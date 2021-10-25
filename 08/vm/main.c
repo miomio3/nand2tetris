@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
     open_file(&fd, argv, buf);
     read_file(fd, buf, &vm_code);
 	direname = pick_direname(argv[1]);
-	printf("%s\n", direname);//debug
 	vm(vm_code, direname);
 	close(fd);
     safe_free(buf);
