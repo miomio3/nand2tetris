@@ -1,17 +1,11 @@
 #include "compiler.h"
 
+
 int	main(int argc, char **argv)
 {
-	DIR				*dir;
-	struct	dirent	*dp;
-
-	dir = opendir(argv[1]);
-	dp = readdir(dir);
-	while(dp != NULL)
-	{
-		printf("%s\n", dp->d_name);
-		dp = readdir(dir);
-	}
-	closedir(dir);
+	if(is_file(argv[1]) == TRUE)
+		read_file(argc, argv);
+	else
+		read_dir(argv);
 	return(0);
 }

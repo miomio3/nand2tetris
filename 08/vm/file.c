@@ -1,8 +1,8 @@
 #include "vm.h"
 
-void	open_file(int *fd, char **argv, char *buf)
+void	open_file(int *fd, char *argv, char *buf)
 {
-	*fd = open(argv[1], O_RDONLY);
+	*fd = open(argv, O_RDONLY);
 	if(*fd == -1)
 	{
 		printf("VMfile couldn't opne.\n");

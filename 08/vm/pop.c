@@ -1,11 +1,13 @@
 #include "vm.h"
 
-void	pop_static(int num, int fd, char *direname)
+void	pop_static(int num, int fd, char *direname, char *filename)
 {
 	write_dec(fd);
 	write_AMD(fd);
 	write_at(fd);
 	write2file(fd, direname);
+	write2file(fd, "_");
+	write2file(fd, filename);
 	write2file(fd, ".");
 	ft_putnbr_fd(num, fd);
 	write_nl(fd);
@@ -50,7 +52,7 @@ void	pop_args(char *arg, int third, int fd)
 	write_MeqD(fd);
 }
 
-void	pop(char **p, int fd, char *direname)
+void	pop(char **p, int fd, char *direname, char *filename)
 {
 	char	*second;
 	int		third;
@@ -61,7 +63,7 @@ void	pop(char **p, int fd, char *direname)
         (*p)++;
 	third = pick2space_num(p);
 	if(ft_strcmp(second, "static") == 0)
-		pop_static(third, fd, direname);
+		pop_static(third, fd, direname, filename);
 	else if(ft_strcmp(second, "temp") == 0)
 		pop_temp(third, fd);
 	else if(ft_strcmp(second, "pointer") == 0)
