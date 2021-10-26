@@ -59,7 +59,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 
 	if (s == NULL)
 		return (NULL);
-	len = len - start + 1;
+	len = len - start;
 	p = (char *)malloc(sizeof(char) * (len + 1));
 	if (p == NULL)
 		return (NULL);

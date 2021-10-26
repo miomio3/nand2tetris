@@ -1,6 +1,6 @@
 NAME = a.out
 CC = gcc 
-SRC = main.c compiler.c fprintf.c file.c file2.c dir.c libft.c libft2.c  pick.c skip.c
+SRC = main.c compiler.c class_compiler.c fprintf.c file.c file2.c dir.c libft.c libft2.c  pick.c skip.c
 
 all		:$(NAME)
 $(NAME)	:$(SRC)

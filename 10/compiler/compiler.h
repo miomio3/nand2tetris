@@ -62,5 +62,6 @@ char	*nnest(char *s);
 char	*nl(char *p);
 void	skip_comment_space(char **code);
 char	*nword(char *s, int n);
+int		index2chr(char *s, char c);
 
 #endif

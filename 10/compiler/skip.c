@@ -49,3 +49,20 @@ char	*nword(char *s, int n)
 		n++;
 	return(s + n);
 }
+
+int	index2chr(char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while(isspace(s[i]) == 0 && s[i] != c)
+		i++;
+	return(i);
+}
+
+char	*skip2chr(char *s, char c)
+{
+	while(isspace(*s) != 0 || *s != c)
+		s++;
+	return(s);
+}
