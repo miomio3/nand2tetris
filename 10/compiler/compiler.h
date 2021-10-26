@@ -25,6 +25,8 @@ typedef	enum
 
 //compiler
 void	compiler(char *code, char *filename);
+//class_compiler
+void	class_compiler(char * code, FILE *fp);
 //dir
 void	read_dir(char **argv);
 //file
@@ -36,6 +38,11 @@ void	read_files(int argc, char **argv);
 void    init_buf(char **array);
 int		is_file(char *argv);
 char	*create_V_filename(char *J_filename);
+//fprintf
+void	fprintf_nonterminal_begin(FILE *fp, char *type);
+void	fprintf_nonterminal_end(FILE *fp, char *type);
+void	fprintf_terminal(FILE *fp, char *type, char *word);
+void	fprintf_nonterminal_begin_nl(FILE *fp, char *type);
 //libft
 void	safe_free(char *array);
 void	ft_putnbr_fd(int n, int fd);
@@ -54,5 +61,6 @@ char	*pick_filename(char *argv);
 char	*nnest(char *s);
 char	*nl(char *p);
 void	skip_comment_space(char **code);
+char	*nword(char *s, int n);
 
 #endif

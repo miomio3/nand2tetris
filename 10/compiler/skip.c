@@ -42,3 +42,10 @@ char	*nnest(char *s)
 		s++;
 	return(s + 2);
 }
+
+char	*nword(char *s, int n)
+{
+	while(isspace(*(s + n)) != 0)
+		n++;
+	return(s + n);
+}
