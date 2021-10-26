@@ -132,6 +132,6 @@ char	*pick_filename(char *argv)
 
 	start = filename_0index(argv);
 	last = filename_lastindex(argv);
-	re = ft_substr(argv, start, last);
+	re = ft_substr(argv, start, last + 1);
 	return(re);
 }

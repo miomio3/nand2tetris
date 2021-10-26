@@ -58,10 +58,13 @@ int		pick2space_num(char **str);
 char	*pick_direname(char *arg);
 char	*pick_filename(char *argv);
 //skip
+void	skip_comment_space(char **code);
+char	*skip2chr(char *s, char c);
+//skip2
 char	*nnest(char *s);
 char	*nl(char *p);
-void	skip_comment_space(char **code);
 char	*nword(char *s, int n);
 int		index2chr(char *s, char c);
+int		index2space(char *s);
 
 #endif

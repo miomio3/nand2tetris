@@ -26,43 +26,18 @@ void	skip_comment_space(char **code)
 		skip_comments(code);
 	}
 }
-
-char	*nl(char *p)
-{
-    while(*p != '\n' && *p != '\0')
-        p++;
-    if(*p == '\n')
-		p++;
-    return(p);
-}
-
-char	*nnest(char *s)
-{
-	while(!(*s == '*' && *(s + 1) == '/'))
-		s++;
-	return(s + 2);
-}
-
-char	*nword(char *s, int n)
-{
-	while(isspace(*(s + n)) != 0)
-		n++;
-	return(s + n);
-}
-
-int	index2chr(char *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while(isspace(s[i]) == 0 && s[i] != c)
-		i++;
-	return(i);
-}
-
+/* 
 char	*skip2chr(char *s, char c)
 {
 	while(isspace(*s) != 0 || *s != c)
 		s++;
 	return(s);
+} */
+/* 
+char	*skip_spaces(char *s)
+{
+	while(isspace(*s) != 0)
+		s++;
+	return(s);
 }
+ */
