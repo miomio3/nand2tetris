@@ -1,70 +1,39 @@
 #include "compiler.h"
 
+void	ft_putnbr_fd(int n, int fd)
+{
+	int	sign;
+
+	sign = 1;
+	if (n < 0)
+	{
+		sign = -1;
+		ft_putchar_fd('-', fd);
+	}
+	if ((n / 10) * sign > 0)
+	{
+		ft_putnbr_fd((n / 10) * sign, fd);
+		ft_putchar_fd('0' + (n % 10) * sign, fd);
+	}
+	else
+		ft_putchar_fd('0' + n * sign, fd);
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+int	strncmp2(const char *s1, const char *s2)
+{
+	return(strncmp(s1, s2, strlen(s2)));
+}
+
+
 void    safe_free(char *array)
 {
     if(array == NULL)
         return;
     free(array);
     array = NULL;
-}
-
-void    ft_bzero(void *s, int n)
-{
-    unsigned char *d;
-    int           i;
-
-    d = s;
-    i = 0;
-    while(i < n)
-    {
-        d[i] = 0;
-        i++;
-    }
-}
-
-void    ft_strcopy(char *ret, char *array)
-{
-    int i;
-
-    i = 0;
-    while(array[i])
-    {
-        ret[i] = array[i];
-        i++;
-    }
-    ret[i] = '\0';
-}
-
-int ft_strlen(const char *array)
-{
-    int i;
-
-    if(array == NULL)
-        return(0);
-    i = 0;
-    while(array[i])
-        i++;
-    return(i);
-}
-
-char    *ft_strjoin_free1(char *array1, char *array2)
-{
-    char    *ret;
-    int     n;
-    int     array1_len;
-
-    array1_len = ft_strlen(array1);//ヌル文字を含まない長さ
-    n = array1_len + ft_strlen(array2);
-    ret = malloc(sizeof(char) * (n + 1));
-    if(ret == NULL)
-    {
-        safe_free(array1);
-        safe_free(array2);
-        exit(-1);
-    }
-    if(array1 != NULL)
-        ft_strcopy(ret, array1);
-    ft_strcopy(&ret[array1_len], array2);
-    safe_free(array1);
-    return(ret);
 }

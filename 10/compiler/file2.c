@@ -16,7 +16,7 @@ void    init_buf(char **array)
     *array = malloc(sizeof(char) * 101);
     if(*array == NULL)
         exit(-1);
-    ft_bzero(*array, 101);
+    bzero(*array, 101);
 }
 
 int	is_file(char *argv)

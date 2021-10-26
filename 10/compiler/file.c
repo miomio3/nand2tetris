@@ -26,7 +26,7 @@ void	read_jackfile(int fd, char *buf, char **code)
     while(read(fd, buf, 100) > 0)
     {
         *code = ft_strjoin_free1(*code, buf);
-        ft_bzero(buf, 100);
+    	bzero(buf, 100);
     }
 }
 
@@ -45,6 +45,7 @@ void	read_files(int argc, char **argv)
         read_jackfile(fd, buf, &code);
 		compiler(code, argv[i]);
 		free(code);
-        i++;
+		close(fd);
+		i++;
     }
 }

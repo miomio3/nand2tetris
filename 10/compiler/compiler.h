@@ -8,6 +8,8 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
+#include <ctype.h>
 
 typedef	enum
 {
@@ -35,26 +37,22 @@ void    init_buf(char **array);
 int		is_file(char *argv);
 char	*create_V_filename(char *J_filename);
 //libft
-void    ft_bzero(void *s, int n);
-void	ft_strcopy(char *ret, char *array);
-int		ft_strlen(const char *array);
 void	safe_free(char *array);
-char	*ft_strjoin_free1(char *array1, char *array2);
-//libft2
-int		ft_isspace(char *p);
-char	*ft_strdup(char *s);
-int		ft_strcmp(char *s1, char *s2);
-char	*nl(char *p);
-char	*next_space(char **p);
-//libft3
-char	*ft_substr(char *s, unsigned int start, size_t len);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
+int		strncmp2(const char *s1, const char *s2);
+//libft2
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin_free1(char *array1, char *array2);
+char	*ft_substr(char *s, unsigned int start, size_t len);
 //pick
 char	*pick2space(char *s);
 int		pick2space_num(char **str);
 char	*pick_direname(char *arg);
 char	*pick_filename(char *argv);
+//skip
+char	*nnest(char *s);
+char	*nl(char *p);
+void	skip_comment_space(char **code);
 
 #endif
