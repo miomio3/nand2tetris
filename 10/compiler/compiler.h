@@ -27,6 +27,8 @@ typedef	enum
 void	compiler(char *code, char *filename);
 //class_compiler
 void	class_compiler(char * code, FILE *fp);
+void	static_compiler(FILE *fp, char **code);
+void	field_compiler(FILE *fp, char **code);
 //dir
 void	read_dir(char **argv);
 //file

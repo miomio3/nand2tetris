@@ -1,0 +1,4 @@
+class {
+	static int	test , test1 ;
+	field   char chartest;
+}
