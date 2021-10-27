@@ -1,4 +1,5 @@
-class {
-	static int	test , test1 ;
-	field   char chartest;
+class mio{
+	static int	test , test1 ; //comment;
+	field   char chartest; /*comment*/
+	constructor int  mio
 }

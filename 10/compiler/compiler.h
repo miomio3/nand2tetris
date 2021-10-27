@@ -27,6 +27,7 @@ typedef	enum
 void	compiler(char *code, char *filename);
 //class_compiler
 void	class_compiler(char * code, FILE *fp);
+void	classVerDec_compiler(char **code, FILE *fp);
 void	static_compiler(FILE *fp, char **code);
 void	field_compiler(FILE *fp, char **code);
 //dir
@@ -45,6 +46,8 @@ void	fprintf_nonterminal_begin(FILE *fp, char *type);
 void	fprintf_nonterminal_end(FILE *fp, char *type);
 void	fprintf_terminal(FILE *fp, char *type, char *word);
 void	fprintf_nonterminal_begin_nl(FILE *fp, char *type);
+void	fprintf_type(FILE *fp, char **code);
+void	fprintf_identifier2chr(FILE *fp, char **code, char chr);
 //libft
 void	safe_free(char *array);
 void	ft_putnbr_fd(int n, int fd);
