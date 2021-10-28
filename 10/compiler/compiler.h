@@ -48,6 +48,7 @@ void	fprintf_terminal(FILE *fp, char *type, char *word);
 void	fprintf_nonterminal_begin_nl(FILE *fp, char *type);
 void	fprintf_type(FILE *fp, char **code);
 void	fprintf_identifier2chr(FILE *fp, char **code, char chr);
+void	fprintf_identifier2chr2(FILE *fp, char **code, char chr, char chr2);
 //libft
 void	safe_free(char *array);
 void	ft_putnbr_fd(int n, int fd);
@@ -62,6 +63,8 @@ char	*pick2space(char *s);
 int		pick2space_num(char **str);
 char	*pick_direname(char *arg);
 char	*pick_filename(char *argv);
+//subroutine
+void	subroutineDec_compiler(char **code, FILE *fp);
 //skip
 void	skip_comment_space(char **code);
 char	*skip2chr(char *s, char c);

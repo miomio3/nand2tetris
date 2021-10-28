@@ -59,3 +59,19 @@ void	fprintf_identifier2chr(FILE *fp, char **code, char chr)
 	*code = nword(*code, i + 1);
 	free(identifier);
 }
+
+void	fprintf_identifier2chr2(FILE *fp, char **code, char chr, char chr2)
+{
+	int		i;
+	int		i2;
+	char	*identifier;
+
+	i = index2chr(*code, chr);
+	i2 = index2chr(*code, chr2);
+	if(i2 < i)
+		i = i2;
+	identifier = ft_substr(*code, 0, i);
+	fprintf_terminal(fp, "identifier", identifier);
+	*code = nword(*code, i);
+	free(identifier);
+}

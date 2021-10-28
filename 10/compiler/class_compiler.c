@@ -1,23 +1,5 @@
 #include "compiler.h"
 
-void	subroutineDec_compiler(char **code, FILE *fp)
-{
-	int		i;
-	char	*type;
-	char	*subroutineName;
-
-	if(strncmp2(*code, "constructor") == 0)
-	{
-		fprintf_nonterminal_begin_nl(fp, "subroutineDec");
-		fprintf_terminal(fp, "keyword", "constructor");
-		*code =nword(*code, 11);
-		fprintf_type(fp, code);
-		fprintf_identifier2chr(fp, code, '(');
-		printf("%s\n", *code);//debug
-		fprintf_nonterminal_end(fp, "subroutineDec");
-	}
-}
-
 void	classname_compiler(char *code, FILE *fp)
 {
 	int		end;

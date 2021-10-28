@@ -1,5 +1,8 @@
 class mio{
 	static int	test , test1 ; //comment;
 	field   char chartest; /*comment*/
-	constructor int  mio
+	constructor int  mio (int i, char i , void *s )
+	{
+		var  char  mio,		test;
+	}
 }
