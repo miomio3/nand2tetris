@@ -37,8 +37,7 @@ void	static_compiler(FILE *fp, char **code)
 	fprintf_type(fp, code);
 	verName_compiler(code, fp);
 	fprintf_nonterminal_end(fp, "classVerDec");
-	if(strncmp2(*code, "field") == 0)
-		field_compiler(fp, code);
+	classVerDec_compiler(code, fp);
 }
 
 void	field_compiler(FILE *fp, char **code)
@@ -51,8 +50,7 @@ void	field_compiler(FILE *fp, char **code)
 	fprintf_type(fp, code);
 	verName_compiler(code, fp);
 	fprintf_nonterminal_end(fp, "classVerDec");
-	if(strncmp2(*code, "field") == 0)
-		static_compiler(fp, code);
+	classVerDec_compiler(code, fp);
 }
 
 void	classVerDec_compiler(char **code, FILE *fp)

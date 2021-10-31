@@ -12,7 +12,8 @@ void	classname_compiler(char *code, FILE *fp)
 	code = strchr(code, '{') + 1;
 	skip_comment_space(&code);
 	classVerDec_compiler(&code , fp);
-	subroutineDec_compiler(&code, fp);
+	while(*code != '}')
+		subroutineDec_compiler(&code, fp);
 	fprintf_terminal(fp, "symbol", "}");
 }
 

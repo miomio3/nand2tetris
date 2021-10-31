@@ -26,11 +26,10 @@ void	subroutineBody_compiler(char **code, FILE *fp)
 	fprintf_nonterminal_begin_nl(fp, "subroutineBody");
 	fprintf_terminal(fp, "symbol", "{");
 	*code = nword(*code, 1);
-	while(**code != '}')
-	{
-		if(strncmp2(*code, "var") == 0)
+	while(strncmp2(*code, "var") == 0)
 			varDec_compiler(code, fp);
-	}
+	while(**code != '}')
+			statement_compiler(code, fp);
 	*code = nword(*code, 1);
 	fprintf_terminal(fp, "symbol", "}");
 	fprintf_nonterminal_begin_nl(fp, "subroutineBody");
@@ -58,7 +57,6 @@ void	parameterList_compiler(char **code, FILE *fp)
 	fprintf_nonterminal_end(fp, "parameterList");
 	*code = nword(*code, 1);
 	fprintf_terminal(fp, "symbol", ")");
-	subroutineBody_compiler(code, fp);
 }
 
 void	subroutineDec_compiler(char **code, FILE *fp)
@@ -75,6 +73,8 @@ void	subroutineDec_compiler(char **code, FILE *fp)
 		fprintf_type(fp, code);
 		fprintf_identifier2chr(fp, code, '(');
 		parameterList_compiler(code, fp);
+		subroutineBody_compiler(code, fp);
 		fprintf_nonterminal_end(fp, "subroutineDec");
+		subroutineDec_compiler(code, fp);
 	}
 }

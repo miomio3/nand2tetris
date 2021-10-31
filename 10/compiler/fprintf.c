@@ -75,3 +75,25 @@ void	fprintf_identifier2chr2(FILE *fp, char **code, char chr, char chr2)
 	*code = nword(*code, i);
 	free(identifier);
 }
+
+void	fprintf_integerRecursion(FILE *fp, char **code)
+{
+	char	c;
+
+	if(isdigit(**code) != 0)
+	{
+		c = **code;
+		*code = nword(*code, 1);
+		fprintf_integerRecursion(fp, code);
+		fprintf(fp, "%c", c);
+	}
+	else
+		return;
+}
+
+void	fprintf_integerConstant(FILE *fp, char **code)
+{
+	fprintf_nonterminal_begin(fp, "integerConstant");
+	fprintf_integerRecursion(fp, code);
+	fprintf_nonterminal_end(fp, "integerConstant");
+}

@@ -42,6 +42,14 @@
 <identifier>test</identifier>
 <symbol>;</symbol>
 </varDec>
+<varDec>
+<keyword>var</keyword>
+<keyword>int</keyword>
+<identifier>inttest</identifier>
+<symbol>,</symbol>
+<identifier>inttest2</identifier>
+<symbol>;</symbol>
+</varDec>
 <symbol>}</symbol>
 <subroutineBody>
 </subroutineDec>
