@@ -23,6 +23,8 @@ typedef	enum
 	NOERROR
 }	error_noerror;
 
+//check_fprintf
+int		check_fprintf_keywordConstant(FILE *fp, char *term);
 //compiler
 void	compiler(char *code, char *filename);
 //class_compiler
@@ -32,6 +34,8 @@ void	static_compiler(FILE *fp, char **code);
 void	field_compiler(FILE *fp, char **code);
 //dir
 void	read_dir(char **argv);
+//expression
+void	expression_compiler(char **code, FILE *fp);
 //file
 void	open_jackfile(int *fd, char *argv);
 void	open_vmfile(int *fd, char *filename);
@@ -49,7 +53,7 @@ void	fprintf_nonterminal_begin_nl(FILE *fp, char *type);
 void	fprintf_type(FILE *fp, char **code);
 void	fprintf_identifier2chr(FILE *fp, char **code, char chr);
 void	fprintf_identifier2chr2(FILE *fp, char **code, char chr, char chr2);
-int		check_fprintf_keywordConstant(FILE *fp, char **code);
+void	fprintf_integerConstant(FILE *fp, char **code);
 //is
 int		isintegerConstant(char *s);
 //libft
@@ -66,10 +70,11 @@ char	*pick2space(char *s);
 int		pick2space_num(char **str);
 char	*pick_direname(char *arg);
 char	*pick_filename(char *argv);
+char	*pick_term(char **code);
 //subroutine
 void	subroutineDec_compiler(char **code, FILE *fp);
 //statement
-void	statement_compiler(char **code, FILE *fp);
+void	statements_compiler(char **code, FILE *fp);
 //skip
 void	skip_comment_space(char **code);
 char	*skip2chr(char *s, char c);

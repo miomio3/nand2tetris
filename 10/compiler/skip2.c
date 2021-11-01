@@ -18,7 +18,7 @@ char	*nnest(char *s)
 
 char	*nword(char *s, int n)
 {
-	while(isspace(*(s + n)) != 0)
+	while(isspace(*(s + n)) != 0 && *(s + n) != '\0')
 		n++;
 	return(s + n);
 }

@@ -15,7 +15,7 @@ void	letStatement_compiler(char **code, FILE *fp)
 	}
 	fprintf_terminal(fp, "symbol", "=");
 	*code = nword(*code, 1);
-	//expression_compiler
+	expression_compiler(code, fp);
 	fprintf_nonterminal_end(fp, "letStatement");
 }
 

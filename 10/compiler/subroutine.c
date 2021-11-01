@@ -29,7 +29,7 @@ void	subroutineBody_compiler(char **code, FILE *fp)
 	while(strncmp2(*code, "var") == 0)
 			varDec_compiler(code, fp);
 	while(**code != '}')
-			statement_compiler(code, fp);
+			statements_compiler(code, fp);
 	*code = nword(*code, 1);
 	fprintf_terminal(fp, "symbol", "}");
 	fprintf_nonterminal_begin_nl(fp, "subroutineBody");
@@ -41,7 +41,7 @@ void	parameterList_compiler(char **code, FILE *fp)
 	int		i;
 	int		i2;
 
-	fprintf_terminal(fp, "symbol", "(");
+	fprintf_terminal(fp, "symbol", ")");
 	*code = nword(*code, 1);
 	fprintf_nonterminal_begin_nl(fp, "parameterList");
 	while(**code != ')')

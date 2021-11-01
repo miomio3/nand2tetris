@@ -135,3 +135,17 @@ char	*pick_filename(char *argv)
 	re = ft_substr(argv, start, last + 1);
 	return(re);
 }
+
+char	*pick_term(char **code)
+{
+	int		i;
+	char	*re;
+
+	i = 0;
+	while(*(*code + i) != '\0' && *(*code + i)!= ';' \
+	&& isspace(*(*code + i)) == 0)
+		i++;
+	re = ft_substr(*code, 0, i);
+	*code = nword(*code, i);
+	return(re);
+}

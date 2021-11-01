@@ -1,0 +1,11 @@
+class mio{
+	static int  test1;
+	field char test2, test3 ; //
+
+	constructor int main ( int i, int j)
+	{
+		var int testvar	;
+		var char	testchar;
+		let term1 = term2;
+	}
+}
