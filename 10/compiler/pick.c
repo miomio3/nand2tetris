@@ -149,3 +149,19 @@ char	*pick_term(char **code)
 	*code = nword(*code, i);
 	return(re);
 }
+
+char	*pick_pare(char *term)
+{
+	int		i;
+	int		start;
+	char	*re;
+
+	i = 1;
+	while(isspace(term[i]) != 0)
+		i++;
+	start = i;
+	while(term[i] != ')' && isspace(term[i]) == 0)
+		i++;
+	re = ft_substr(term, start, i);
+	return(re);
+}

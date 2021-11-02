@@ -24,7 +24,7 @@ typedef	enum
 }	error_noerror;
 
 //check_fprintf
-int		check_fprintf_keywordConstant(FILE *fp, char *term);
+int		check_fprintf_keywordConstant(FILE *fp, char **code);
 //compiler
 void	compiler(char *code, char *filename);
 //class_compiler
@@ -36,6 +36,7 @@ void	field_compiler(FILE *fp, char **code);
 void	read_dir(char **argv);
 //expression
 void	expression_compiler(char **code, FILE *fp);
+void	term_compiler(char **code, FILE *fp);
 //file
 void	open_jackfile(int *fd, char *argv);
 void	open_vmfile(int *fd, char *filename);
@@ -56,6 +57,7 @@ void	fprintf_identifier2chr2(FILE *fp, char **code, char chr, char chr2);
 void	fprintf_integerConstant(FILE *fp, char **code);
 //is
 int		isintegerConstant(char *s);
+int		isunaryOp(char c);
 //libft
 void	safe_free(char *array);
 void	ft_putnbr_fd(int n, int fd);
@@ -71,6 +73,7 @@ int		pick2space_num(char **str);
 char	*pick_direname(char *arg);
 char	*pick_filename(char *argv);
 char	*pick_term(char **code);
+char	*pick_pare(char *term);
 //subroutine
 void	subroutineDec_compiler(char **code, FILE *fp);
 //statement

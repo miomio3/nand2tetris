@@ -6,6 +6,6 @@ class mio{
 	{
 		var int testvar	;
 		var char	testchar;
-		let term1 = term2;
+		let term1 = (-1);
 	}
 }
