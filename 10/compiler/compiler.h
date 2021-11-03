@@ -55,9 +55,14 @@ void	fprintf_type(FILE *fp, char **code);
 void	fprintf_identifier2chr(FILE *fp, char **code, char chr);
 void	fprintf_identifier2chr2(FILE *fp, char **code, char chr, char chr2);
 void	fprintf_integerConstant(FILE *fp, char **code);
+void	fprintf2dilimiter(FILE *fp, char **code);
 //is
+int		isdilimiter(char c);
 int		isintegerConstant(char *s);
 int		isunaryOp(char c);
+int		isvarPare(char *s);
+int		issubroutineCall(char *s);
+int		isop(char c);
 //libft
 void	safe_free(char *array);
 void	ft_putnbr_fd(int n, int fd);

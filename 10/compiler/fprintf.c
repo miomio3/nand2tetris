@@ -56,7 +56,7 @@ void	fprintf_identifier2chr(FILE *fp, char **code, char chr)
 	i = index2chr(*code, chr);
 	identifier = ft_substr(*code, 0, i);
 	fprintf_terminal(fp, "identifier", identifier);
-	*code = nword(*code, i + 1);
+	*code = nword(*code, i);
 	free(identifier);
 }
 
@@ -96,4 +96,18 @@ void	fprintf_integerConstant(FILE *fp, char **code)
 	fprintf_nonterminal_begin(fp, "integerConstant");
 	fprintf_integerRecursion(fp, code);
 	fprintf_nonterminal_end(fp, "integerConstant");
+}
+
+void	fprintf2dilimiter(FILE *fp, char **code)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	while(isdilimiter(*(*code + i)) != 1)
+		i++;
+	str = ft_substr(*code, 0, i);
+	fprintf(fp, "%s", str);
+	*code = nword(*code, i);
+	free(str);
 }
