@@ -32,7 +32,7 @@ void	subroutineBody_compiler(char **code, FILE *fp)
 			statements_compiler(code, fp);
 	*code = nword(*code, 1);
 	fprintf_terminal(fp, "symbol", "}");
-	fprintf_nonterminal_begin_nl(fp, "subroutineBody");
+	fprintf_nonterminal_end(fp, "subroutineBody");
 	skip_comment_space(code);
 }
 

@@ -37,6 +37,7 @@ void	read_dir(char **argv);
 //expression
 void	expression_compiler(char **code, FILE *fp);
 void	term_compiler(char **code, FILE *fp);
+void	subroutineCall_compiler(char **code, FILE *fp);
 //file
 void	open_jackfile(int *fd, char *argv);
 void	open_vmfile(int *fd, char *filename);
