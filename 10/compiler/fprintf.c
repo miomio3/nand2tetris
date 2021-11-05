@@ -84,8 +84,8 @@ void	fprintf_integerRecursion(FILE *fp, char **code)
 	{
 		c = **code;
 		*code = nword(*code, 1);
-		fprintf_integerRecursion(fp, code);
 		fprintf(fp, "%c", c);
+		fprintf_integerRecursion(fp, code);
 	}
 	else
 		return;
@@ -110,4 +110,32 @@ void	fprintf2dilimiter(FILE *fp, char **code)
 	fprintf(fp, "%s", str);
 	*code = nword(*code, i);
 	free(str);
+}
+
+void	fprintf_stringConstant(FILE *fp, char **code)
+{
+	int		i;
+	char	*string;
+
+	i = 1;
+	while(*(*code + i) != '\"')
+		i++;
+	string = ft_substr(*code, 1, i);
+	fprintf(fp, "%s", string);
+	*code = nword(*code, i + 1);
+	free(string);
+}
+
+void	fprintf_pareBegin(FILE *fp, char **code)
+{
+	fprintf_terminal(fp, "symbol", "{");
+	*code = nword(*code, 1);
+	skip_comment_space(code);
+}
+
+void	fprintf_pareEnd(FILE *fp, char **code)
+{
+	fprintf_terminal(fp, "symbol", "}");
+	*code = nword(*code, 1);
+	skip_comment_space(code);
 }

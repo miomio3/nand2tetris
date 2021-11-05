@@ -86,6 +86,13 @@ void	identifier_compiler(char **code, FILE *fp)
 	fprintf_nonterminal_end(fp, "identifier");
 }
 
+void	stringConstant_compiler(char **code, FILE *fp)
+{
+	fprintf_nonterminal_begin(fp, "stringConstant");
+	fprintf_stringConstant(fp, code);
+	fprintf_nonterminal_end(fp, "stringConstant");
+}
+
 void	term_compiler(char **code, FILE *fp)
 {
 	fprintf_nonterminal_begin_nl(fp, "term");
@@ -101,6 +108,8 @@ void	term_compiler(char **code, FILE *fp)
 		*code = nword(*code, 1);
 		fprintf_terminal(fp, "symbol", ")");
 	}
+	else if(**code == '"')
+		stringConstant_compiler(code, fp);
 	else if(isunaryOp(**code) == 1)
 		unaryOp_compiler(code, fp);
 	else if(isvarPare(*code) == 1)

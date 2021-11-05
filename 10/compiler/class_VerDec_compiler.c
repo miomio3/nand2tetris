@@ -4,14 +4,18 @@ void	verName_compiler(char **code, FILE *fp)
 {
 	int		i;
 	int		i2;
+	int		i3;
 	char	*vername;
 
 	while(**code != ';')
 	{
 		i = index2space(*code);
 		i2 = index2chr(*code, ';') - 1;
+		i3 = index2chr(*code, ',') - 1;
 		if(i > i2)
 			i = i2;
+		if(i > i3)
+			i = i3;
 		vername = ft_substr(*code, 0, i + 1);
 		fprintf_terminal(fp, "identifier", vername);
 		*code = nword(*code, i + 1);

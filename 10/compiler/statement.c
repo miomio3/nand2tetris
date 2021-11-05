@@ -33,21 +33,17 @@ void	ifStatement_compiler(char **code, FILE *fp)
 	expression_compiler(code, fp);
 	*code = nword(*code, 1);
 	fprintf_terminal(fp, "symbol", ")");
-	fprintf_terminal(fp, "symbol", "{");
-	*code = nword(*code, 1);
+	fprintf_pareBegin(fp, code);
 	statements_compiler(code, fp);
-	*code = nword(*code, 1);
-	fprintf_terminal(fp, "symbol", "}");
+	fprintf_pareEnd(fp, code);
 	skip_comment_space(code);
 	if(strncmp2(*code, "else") == 0)
 	{
 		fprintf_terminal(fp, "keyword", "else");
 		*code = nword(*code, 4);
-		fprintf_terminal(fp, "symbol", "{");
-		*code = nword(*code, 1);
+		fprintf_pareBegin(fp, code);
 		statements_compiler(code, fp);
-		*code = nword(*code, 1);
-		fprintf_terminal(fp, "symbol", "}");
+		fprintf_pareEnd(fp, code);
 		skip_comment_space(code);
 	}
 	fprintf_nonterminal_end(fp, "ifStatement");
@@ -63,11 +59,9 @@ void	whileStatement_compiler(char **code, FILE *fp)
 	expression_compiler(code, fp);
 	*code = nword(*code, 1);
 	fprintf_terminal(fp, "symbol", ")");
-	fprintf_terminal(fp, "symbol", "{");
-	*code = nword(*code, 1);
+	fprintf_pareBegin(fp, code);
 	statements_compiler(code, fp);
-	*code = nword(*code, 1);
-	fprintf_terminal(fp, "symbol", "}");
+	fprintf_pareEnd(fp, code);
 	fprintf_nonterminal_end(fp, "whileStatement");
 	skip_comment_space(code);
 }

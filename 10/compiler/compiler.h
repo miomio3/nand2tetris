@@ -57,6 +57,9 @@ void	fprintf_identifier2chr(FILE *fp, char **code, char chr);
 void	fprintf_identifier2chr2(FILE *fp, char **code, char chr, char chr2);
 void	fprintf_integerConstant(FILE *fp, char **code);
 void	fprintf2dilimiter(FILE *fp, char **code);
+void	fprintf_stringConstant(FILE *fp, char **code);
+void	fprintf_pareEnd(FILE *fp, char **code);
+void	fprintf_pareBegin(FILE *fp, char **code);
 //is
 int		isdilimiter(char c);
 int		isintegerConstant(char *s);
